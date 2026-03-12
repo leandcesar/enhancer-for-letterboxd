@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+      <title>Enhancer for Letterboxd</title>
+
+      <meta
+         name="description"
+         content="Enhances the Letterboxd experience with additional features. Install the Chrome extension."
+      />
+      <meta name="robots" content="index,follow" />
+      <link
+         rel="canonical"
+         href="https://enhancer-for-letterboxd.vercel.app/"
+      />
+
+      <meta name="theme-color" content="#14181c" />
+      <meta name="color-scheme" content="dark" />
+
+      <meta property="og:title" content="Enhancer for Letterboxd" />
+      <meta
+         property="og:description"
+         content="Enhances the Letterboxd experience with additional features."
+      />
+      <meta property="og:type" content="website" />
+      <meta
+         property="og:url"
+         content="https://enhancer-for-letterboxd.vercel.app/"
+      />
+      <meta
+         property="og:image"
+         content="https://enhancer-for-letterboxd.vercel.app/assets/preview.png"
+      />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content="Enhancer for Letterboxd" />
+      <meta
+         name="twitter:description"
+         content="Enhances the Letterboxd experience with additional features."
+      />
+      <meta
+         name="twitter:image"
+         content="https://enhancer-for-letterboxd.vercel.app/assets/preview.png"
+      />
+
+      <link
+         rel="icon"
+         href="https://enhancer-for-letterboxd.vercel.app/assets/icon.png"
+      />
+      <link
+         rel="apple-touch-icon"
+         href="https://enhancer-for-letterboxd.vercel.app/assets/icon.png"
+      />
+      <link
+         rel="preload"
+         as="image"
+         href="https://enhancer-for-letterboxd.vercel.app/assets/logo.avif"
+      />
+
+      <style>
+         *,
+         *:before,
+         *:after {
+            box-sizing: border-box;
+            margin: 0;
+         }
+
+         html,
+         body {
+            height: 100%;
+         }
+
+         body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family:
+               system-ui,
+               -apple-system,
+               Segoe UI,
+               Roboto,
+               Helvetica,
+               Arial,
+               sans-serif;
+            color: #fff;
+            background: #14181c
+               url("https://enhancer-for-letterboxd.vercel.app/assets/background.webp")
+               repeat-x 0 -1px;
+         }
+
+         main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+            text-align: center;
+         }
+
+         .logo {
+            width: 80%;
+            max-width: 420px;
+            height: auto;
+            filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.15));
+            content-visibility: auto;
+         }
+
+         .install {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 26px;
+            background: #00e054;
+            color: #fff;
+            font-size: 15px;
+            font-weight: 700;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: 0.2s;
+            box-shadow: 0 8px 24px rgba(0, 224, 84, 0.35);
+         }
+
+         .install:hover {
+            background: #00c84c;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(0, 224, 84, 0.45);
+         }
+
+         .install:focus-visible {
+            outline: 3px solid #40bcf4;
+            outline-offset: 3px;
+         }
+
+         .install img,
+         .browsers img {
+            width: 22px;
+            height: 22px;
+         }
+
+         .browsers {
+            display: flex;
+            gap: 16px;
+            font-size: 14px;
+            opacity: 0.75;
+         }
+
+         .browsers span {
+            opacity: 0.6;
+         }
+
+         .browsers img {
+            filter: grayscale(1) brightness(0.8) opacity(0.8);
+            transition: 0.2s;
+         }
+
+         .browsers img:hover {
+            opacity: 1;
+         }
+
+         footer {
+            position: fixed;
+            bottom: 14px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 14px;
+            opacity: 0.45;
+         }
+
+         .credit {
+            background: none;
+            border: 0;
+            color: inherit;
+            font: inherit;
+            cursor: pointer;
+            margin-left: 10px;
+            opacity: 0.6;
+            text-decoration: none;
+         }
+
+         .credit:hover {
+            opacity: 1;
+         }
+
+         .skip {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #00e054;
+            color: #000;
+            padding: 8px 14px;
+            border-radius: 6px;
+            font-weight: 600;
+         }
+
+         .skip:focus {
+            top: 10px;
+            left: 10px;
+         }
+
+         .sr {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+         }
+
+         @media (prefers-reduced-motion: reduce) {
+            * {
+               transition: none !important;
+            }
+         }
+      </style>
+   </head>
+
+   <body>
+      <a href="#main" class="skip">Skip to content</a>
+
+      <main id="main">
+         <h1 class="sr">Enhancer for Letterboxd</h1>
+
+         <picture>
+            <source
+               srcset="
+                  https://enhancer-for-letterboxd.vercel.app/assets/logo.avif
+               "
+               type="image/avif"
+            />
+            <source
+               srcset="
+                  https://enhancer-for-letterboxd.vercel.app/assets/logo.webp
+               "
+               type="image/webp"
+            />
+            <img
+               src="https://enhancer-for-letterboxd.vercel.app/assets/logo.png"
+               class="logo"
+               alt="Enhancer for Letterboxd"
+               width="420"
+               height="120"
+               fetchpriority="high"
+               decoding="async"
+            />
+         </picture>
+
+         <a
+            class="install"
+            href="https://chromewebstore.google.com/detail/abkbjnimmidipmhhhlcnikkifjpdjdpc"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Install Enhancer for Letterboxd Chrome extension"
+         >
+            <img
+               src="https://enhancer-for-letterboxd.vercel.app/icons/chrome.svg"
+               alt=""
+               aria-hidden="true"
+            />
+            Install for Chrome
+         </a>
+
+         <div class="browsers">
+            <span>Coming soon</span>
+            <img
+               src="https://enhancer-for-letterboxd.vercel.app/icons/firefox.svg"
+               alt=""
+               aria-hidden="true"
+               loading="lazy"
+               decoding="async"
+            />
+            <img
+               src="https://enhancer-for-letterboxd.vercel.app/icons/opera.svg"
+               alt=""
+               aria-hidden="true"
+               loading="lazy"
+               decoding="async"
+            />
+            <img
+               src="https://enhancer-for-letterboxd.vercel.app/icons/safari.svg"
+               alt=""
+               aria-hidden="true"
+               loading="lazy"
+               decoding="async"
+            />
+         </div>
+      </main>
+
+      <footer>
+         <a
+            class="credit"
+            href="https://github.com/leandcesar"
+            target="_blank"
+            rel="noopener noreferrer"
+         >
+            @leandcesar
+         </a>
+
+         <button
+            id="share"
+            class="credit"
+            type="button"
+            aria-label="Share this page"
+         >
+            Share
+         </button>
+      </footer>
+
+      <script>
+         const b = document.getElementById("share");
+
+         b?.addEventListener("click", async () => {
+            const u = location.href;
+
+            if (navigator.share) {
+               try {
+                  await navigator.share({
+                     title: document.title,
+                     text: "Enhance the Letterboxd experience with additional features.",
+                     url: u,
+                  });
+               } catch {}
+
+               return;
+            }
+
+            navigator.clipboard?.writeText(u);
+         });
+      </script>
+   </body>
+</html>
