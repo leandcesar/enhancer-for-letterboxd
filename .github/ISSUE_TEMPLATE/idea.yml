@@ -1,0 +1,29 @@
+name: Idea / suggestion
+description: Share a quick idea or suggestion for the extension
+labels: ["idea"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Have a quick idea to improve the extension? Share it here.
+
+  - type: textarea
+    id: idea
+    attributes:
+      label: Your idea
+      description: Describe your suggestion.
+      placeholder: It would be nice if...
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Context (optional)
+      description: Why would this be useful?
+
+  - type: textarea
+    id: examples
+    attributes:
+      label: Examples (optional)
+      description: Screenshots, mockups, or references.
