@@ -1,0 +1,59 @@
+name: Bug report
+description: Report something that isn't working correctly
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Clearly describe the issue.
+      placeholder: What happened?
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: How can we reproduce the problem?
+      placeholder: |
+        1. Go to ...
+        2. Click ...
+        3. See error
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: What should have happened?
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots (optional)
+      description: Add screenshots if they help explain the issue.
+
+  - type: input
+    id: browser
+    attributes:
+      label: Browser
+      placeholder: Chrome / Firefox / Edge
+
+  - type: input
+    id: extension_version
+    attributes:
+      label: Extension version
+      placeholder: v1.0.5
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional context
+      description: Any extra details that might help.

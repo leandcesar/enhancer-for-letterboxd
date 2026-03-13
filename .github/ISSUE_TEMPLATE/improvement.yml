@@ -1,0 +1,34 @@
+name: Improvement suggestion
+description: Suggest an improvement to an existing feature
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Suggest improvements to existing functionality.
+
+  - type: textarea
+    id: feature
+    attributes:
+      label: Feature affected
+      description: Which feature could be improved?
+      placeholder: Random film button, runtime display, filters...
+    validations:
+      required: true
+
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Suggested improvement
+      description: What change would improve the experience?
+
+  - type: textarea
+    id: reason
+    attributes:
+      label: Why would this help?
+      description: Explain why this improvement would be useful.
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional context

@@ -1,0 +1,22 @@
+name: Question
+description: Ask a question about the extension
+labels: ["question"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Ask questions about features, usage, or configuration.
+
+  - type: textarea
+    id: question
+    attributes:
+      label: Your question
+      placeholder: What would you like to know?
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Provide additional details if needed.
