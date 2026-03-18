@@ -249,11 +249,15 @@
    <footer>
       <div class="footer-wrap">
          <nav class="footer-nav" aria-label="Footer">
-            <a href="https://github.com/leandcesar/enhancer-for-letterboxd/issues" target="_blank"
-               rel="noopener noreferrer">Feedback</a>
+            <!-- <a href="https://github.com/leandcesar/enhancer-for-letterboxd/" target="_blank"
+               rel="noopener noreferrer">About</a> -->
             <a href="https://github.com/leandcesar/enhancer-for-letterboxd/releases" target="_blank"
-               rel="noopener noreferrer">Changelog</a>
-            <a href="https://buymeacoffee.com/leandcesar" target="_blank" rel="noopener noreferrer">Donate</a>
+               rel="noopener noreferrer">News</a>
+            <!-- <a href="https://github.com/leandcesar/enhancer-for-letterboxd/" target="_blank"
+               rel="noopener noreferrer">Help</a> -->
+            <a href="https://github.com/leandcesar/enhancer-for-letterboxd/issues" target="_blank"
+               rel="noopener noreferrer">Contact</a>
+            <!-- <a href="https://buymeacoffee.com/leandcesar" target="_blank" rel="noopener noreferrer">Donate</a> -->
             <button id="share" aria-label="Share this page">Share</button>
          </nav>
 
@@ -269,19 +273,25 @@
          .getElementById("share")
          ?.addEventListener("click", async () => {
             const url = location.href;
+            const text = "Enhance the Letterboxd experience with additional features.";
 
             if (navigator.share) {
                try {
                   await navigator.share({
                      title: document.title,
-                     text: "Enhance the Letterboxd experience with additional features.",
+                     text,
                      url,
                   });
                   return;
-               } catch { }
+               } catch {
+               }
             }
 
-            navigator.clipboard?.writeText(url);
+            const shareUrl = `https://x.com/intent/tweet?text=${encodeURIComponent(
+               text
+            )}&url=${encodeURIComponent(url)}`;
+
+            window.open(shareUrl, "_blank", "noopener,noreferrer");
          });
 
       const chromeBtn = document.getElementById("btn-chrome");
