@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>Enhancer for Letterboxd - News</title>
+
+    <meta name="description" content="Enhances the Letterboxd experience with additional features." />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://enhancer-for-letterboxd.vercel.app/news" />
+
+    <meta name="theme-color" content="#14181c" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="format-detection" content="telephone=no" />
+
+    <link rel="preconnect" href="https://enhancer-for-letterboxd.vercel.app" />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+    <link rel="preconnect" href="https://api.github.com" />
+
+    <link rel="icon" href="https://enhancer-for-letterboxd.vercel.app/assets/icon.png" />
+    <link rel="apple-touch-icon" href="https://enhancer-for-letterboxd.vercel.app/assets/icon.png" />
+
+    <link rel="preload" href="../style.css" as="style" />
+    <link rel="stylesheet" href="../style.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+
+<body>
+    <main>
+        <div class="container">
+            <div id="list" class="list" aria-live="polite"></div>
+            <div id="pagination" class="pagination" aria-label="Pagination"></div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-wrap">
+            <nav class="footer-nav" aria-label="Footer">
+                <a href="/">Home</a>
+                <a href="https://github.com/leandcesar/enhancer-for-letterboxd/issues" target="_blank"
+                    rel="noopener noreferrer">Contact</a>
+                <!-- <a href="https://buymeacoffee.com/leandcesar" target="_blank" rel="noopener noreferrer">Donate</a> -->
+                <button id="share" aria-label="Share this page" type="button">Share</button>
+            </nav>
+
+            <p class="copyright">
+                Made by
+                <a href="https://linktr.ee/leandcesar" target="_blank" rel="noopener noreferrer">@leandcesar</a>
+            </p>
+        </div>
+    </footer>
+
+    <script defer>
+        const CACHE_KEY = "releases_cache_v1";
+        const CACHE_TTL = 1000 * 60 * 10;
+        const PER_PAGE = 1;
+
+        const list = document.getElementById("list");
+        const pagination = document.getElementById("pagination");
+
+        document.getElementById("share")?.addEventListener("click", async () => {
+            const url = location.href;
+            const text = "Enhance the Letterboxd experience with additional features.";
+
+            if (navigator.share) {
+                try {
+                    await navigator.share({ title: document.title, text, url });
+                    return;
+                } catch { }
+            }
+
+            window.open(
+                `https://x.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`,
+                "_blank",
+                "noopener,noreferrer"
+            );
+        });
+
+        function getPage() {
+            const params = new URLSearchParams(location.search);
+            return parseInt(params.get("page"), 10) || 1;
+        }
+
+        function buildPageUrl(page) {
+            return page === 1 ? "/news" : `/news?page=${page}`;
+        }
+
+        async function getReleases() {
+            try {
+                const cached = localStorage.getItem(CACHE_KEY);
+
+                if (cached) {
+                    const { data, timestamp } = JSON.parse(cached);
+                    if (Date.now() - timestamp < CACHE_TTL) return data;
+                }
+            } catch { }
+
+            const res = await fetch(
+                "https://api.github.com/repos/leandcesar/enhancer-for-letterboxd/releases",
+                { cache: "force-cache" }
+            );
+
+            const data = await res.json();
+
+            try {
+                localStorage.setItem(
+                    CACHE_KEY,
+                    JSON.stringify({
+                        data,
+                        timestamp: Date.now(),
+                    })
+                );
+            } catch { }
+
+            return data;
+        }
+
+        function renderRelease(r, isLatest = false) {
+            const date = new Date(r.published_at).toLocaleDateString(undefined, {
+                year: "numeric",
+                month: "short",
+                day: "numeric",
+            });
+
+            return `
+            <article class="release" id="${r.tag_name}">
+                <header class="release-header">
+                    <div class="release-title">
+                        <span title="Published at ${date}">${r.tag_name}</span>
+                        <br>
+                        ${isLatest ? '<span class="badge latest">Latest</span>' : ""}
+                        ${r.prerelease ? '<span class="badge pre">Pre-release</span>' : ""}
+                    </div>
+                </header>
+
+                <div class="markdown">
+                    ${window.marked ? marked.parse(r.body || "") : ""}
+                </div>
+            </article>
+            `;
+        }
+
+        async function render() {
+            list.textContent = "Loading...";
+
+            try {
+                const page = getPage();
+
+                const releases = (await getReleases())
+                    .filter((r) => r.body)
+                    .sort((a, b) =>
+                        new Date(b.published_at) - new Date(a.published_at)
+                    );
+
+                const latestStable = releases.find((r) => !r.prerelease);
+
+                const start = (page - 1) * PER_PAGE;
+                const paginated = releases.slice(start, start + PER_PAGE);
+
+                list.innerHTML = paginated
+                    .map((r) => renderRelease(r, r.id === latestStable?.id))
+                    .join("");
+
+                const totalPages = Math.ceil(releases.length / PER_PAGE);
+
+                pagination.innerHTML = `
+                    ${page > 1 ? `<a href="${buildPageUrl(page - 1)}" rel="prev">Newer</a>` : "<span></span>"}
+                    ${page < totalPages ? `<a href="${buildPageUrl(page + 1)}" rel="next">Older</a>` : "<span></span>"}
+                `;
+
+                if (location.hash) {
+                    const el = document.getElementById(location.hash.slice(1));
+                    el?.scrollIntoView();
+                }
+
+            } catch {
+                list.textContent = "Failed to load releases.";
+            }
+        }
+
+        render();
+    </script>
+</body>
+
+</html>
