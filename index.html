@@ -2,312 +2,123 @@
 <html lang="en">
 
 <head>
-   <meta charset="utf-8" />
-   <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-   <title>Enhancer for Letterboxd</title>
+    <title>Enhancer for Letterboxd</title>
 
-   <meta name="description"
-      content="Enhances the Letterboxd experience with additional features. Install the Chrome extension." />
-   <meta name="robots" content="index,follow" />
-   <link rel="canonical" href="https://enhancer-for-letterboxd.vercel.app/" />
+    <meta name="description" content="Enhances the Letterboxd experience with additional features." />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://enhancer-for-letterboxd.vercel.app/" />
 
-   <meta name="theme-color" content="#14181c" />
-   <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#14181c" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="format-detection" content="telephone=no" />
 
-   <link rel="icon" href="https://enhancer-for-letterboxd.vercel.app/assets/icon.png" />
-   <link rel="apple-touch-icon" href="https://enhancer-for-letterboxd.vercel.app/assets/icon.png" />
+    <link rel="preconnect" href="https://enhancer-for-letterboxd.vercel.app" />
+    <link rel="preconnect" href="https://chromewebstore.google.com" />
+    <link rel="preconnect" href="https://addons.mozilla.org" />
 
-   <link rel="preload" as="image" href="https://enhancer-for-letterboxd.vercel.app/assets/logo.png" />
+    <link rel="icon" href="https://enhancer-for-letterboxd.vercel.app/assets/icon.png" />
+    <link rel="apple-touch-icon" href="https://enhancer-for-letterboxd.vercel.app/assets/icon.png" />
 
-   <style>
-      :root {
-         --black: #000;
-         --white: #fff;
-         --green: #00e054;
-         --green-hover: #00c84c;
-         --blue: #40bcf4;
-         --bg: #14181c;
-         --footer: #2c3440;
-         --footer-text: #99aabb;
-         --footer-text-hover: #d0dae3;
-         --footer-muted: #6e7c8c;
-      }
+    <link rel="preload" as="image" href="https://enhancer-for-letterboxd.vercel.app/assets/logo.png" fetchpriority="high" />
 
-      *,
-      *::before,
-      *::after {
-         box-sizing: border-box;
-         margin: 0;
-      }
-
-      html,
-      body {
-         min-height: 100vh;
-         display: flex;
-         flex-direction: column;
-         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-            Helvetica, Arial, sans-serif;
-         color: var(--white);
-         background: var(--bg) url("https://enhancer-for-letterboxd.vercel.app/assets/background.webp") repeat-x 0 -1px;
-      }
-
-      main {
-         flex: 1;
-         display: flex;
-         flex-direction: column;
-         align-items: center;
-         justify-content: center;
-         gap: 40px;
-         text-align: center;
-         padding: 40px 20px;
-      }
-
-      .logo {
-         max-width: 80%;
-         height: auto;
-         filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.15));
-      }
-
-      .install-buttons {
-         display: flex;
-         flex-direction: column;
-         gap: 12px;
-         align-items: center;
-      }
-
-      .install {
-         display: flex;
-         align-items: center;
-         gap: 10px;
-         padding: 14px 26px;
-         font-size: 15px;
-         font-weight: 700;
-         border-radius: 8px;
-         text-decoration: none;
-         color: var(--white);
-
-         background: #3a3f45;
-         opacity: 0.8;
-         box-shadow: none;
-
-         transform: scale(0.96);
-
-         transition:
-            transform 0.15s ease,
-            box-shadow 0.15s ease,
-            background 0.15s ease;
-      }
-
-      .install.recommended {
-         background: var(--green);
-         opacity: 1;
-         transform: scale(1);
-         box-shadow: 0 8px 24px rgba(0, 224, 84, 0.35);
-      }
-
-      .install:hover {
-         transform: translateY(-2px) scale(1);
-      }
-
-      .install.recommended:hover {
-         background: var(--green-hover);
-         box-shadow: 0 12px 32px rgba(0, 224, 84, 0.45);
-      }
-
-      .install:focus-visible {
-         outline: 3px solid var(--blue);
-         outline-offset: 3px;
-      }
-
-      .install img,
-      .browsers img {
-         width: 22px;
-         height: 22px;
-      }
-
-      .browsers {
-         display: flex;
-         gap: 16px;
-         font-size: 14px;
-         opacity: 0.75;
-      }
-
-      .browsers span {
-         opacity: 0.6;
-      }
-
-      .browsers img {
-         filter: grayscale(1) brightness(0.8) opacity(0.8);
-      }
-
-      footer {
-         width: 100%;
-         padding: 32px 0;
-         background: var(--footer);
-         border-top: 1px solid rgba(255, 255, 255, 0.05);
-         color: var(--footer-text);
-      }
-
-      .footer-wrap {
-         width: 950px;
-         max-width: calc(100% - 40px);
-         margin: 0 auto;
-         display: flex;
-         flex-wrap: wrap;
-         justify-content: space-between;
-      }
-
-      .footer-nav {
-         display: flex;
-         gap: 18px;
-         font-size: 15px;
-         font-weight: 700;
-      }
-
-      footer a,
-      footer button {
-         font: inherit;
-         color: var(--footer-text);
-         text-decoration: none;
-         background: none;
-         border: 0;
-         cursor: pointer;
-      }
-
-      footer a:hover,
-      footer button:hover {
-         color: var(--footer-text-hover);
-      }
-
-      .copyright {
-         width: 100%;
-         margin-top: 10px;
-         font-size: 12px;
-         color: var(--footer-muted);
-      }
-
-      .skip {
-         position: absolute;
-         top: -40px;
-         left: 0;
-         background: var(--green);
-         color: var(--black);
-         padding: 8px 14px;
-         border-radius: 6px;
-      }
-
-      .skip:focus {
-         top: 10px;
-         left: 10px;
-      }
-
-      .sr {
-         position: absolute;
-         width: 1px;
-         height: 1px;
-         overflow: hidden;
-         clip-path: inset(50%);
-      }
-   </style>
+    <link rel="preload" href="style.css" as="style" />
+    <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-   <a href="#main" class="skip">Skip to content</a>
+    <a href="#main" class="skip">Skip to content</a>
 
-   <main id="main">
-      <h1 class="sr">Enhancer for Letterboxd</h1>
+    <main id="main">
+        <h1 class="sr">Enhancer for Letterboxd</h1>
 
-      <img src="https://enhancer-for-letterboxd.vercel.app/assets/logo.png" class="logo" alt="Enhancer for Letterboxd"
-         decoding="async" width="256" height="256" />
+        <img src="https://enhancer-for-letterboxd.vercel.app/assets/logo.png" class="logo" alt="Enhancer for Letterboxd"
+            decoding="async" fetchpriority="high" width="200" height="200" />
 
-      <div class="install-buttons" id="install-buttons">
-         <a id="btn-chrome" class="install"
-            href="https://chromewebstore.google.com/detail/abkbjnimmidipmhhhlcnikkifjpdjdpc" target="_blank"
-            rel="noopener noreferrer">
-            <img src="https://enhancer-for-letterboxd.vercel.app/icons/chrome.svg" alt="" aria-hidden="true" />
-            Install for Chrome
-         </a>
+        <div class="install-buttons" id="install-buttons">
+            <a id="btn-chrome" class="install"
+                href="https://chromewebstore.google.com/detail/abkbjnimmidipmhhhlcnikkifjpdjdpc" target="_blank"
+                rel="noopener noreferrer">
+                <img src="https://enhancer-for-letterboxd.vercel.app/icons/chrome.svg" alt="" role="presentation"
+                    width="24" height="24" decoding="async" />
+                Install for Chrome
+            </a>
 
-         <a id="btn-firefox" class="install"
-            href="https://addons.mozilla.org/pt-BR/firefox/addon/enhancer-for-letterboxd/" target="_blank"
-            rel="noopener noreferrer">
-            <img src="https://enhancer-for-letterboxd.vercel.app/icons/firefox.svg" alt="" aria-hidden="true" />
-            Install for Firefox
-         </a>
-      </div>
+            <a id="btn-firefox" class="install"
+                href="https://addons.mozilla.org/pt-BR/firefox/addon/enhancer-for-letterboxd/" target="_blank"
+                rel="noopener noreferrer">
+                <img src="https://enhancer-for-letterboxd.vercel.app/icons/firefox.svg" alt="" role="presentation"
+                    width="24" height="24" decoding="async" />
+                Install for Firefox
+            </a>
+        </div>
 
-      <div class="browsers" aria-hidden="true">
-         <span>Coming soon</span>
+        <div class="browsers" aria-hidden="true">
+            <span>Coming soon</span>
 
-         <img src="https://enhancer-for-letterboxd.vercel.app/icons/opera.svg" alt="" loading="lazy" decoding="async" />
-         <img src="https://enhancer-for-letterboxd.vercel.app/icons/safari.svg" alt="" loading="lazy"
-            decoding="async" />
-      </div>
-   </main>
+            <img src="https://enhancer-for-letterboxd.vercel.app/icons/opera.svg" alt="" role="presentation"
+                loading="lazy" decoding="async" width="24" height="24" />
 
-   <footer>
-      <div class="footer-wrap">
-         <nav class="footer-nav" aria-label="Footer">
-            <!-- <a href="https://github.com/leandcesar/enhancer-for-letterboxd/" target="_blank"
-               rel="noopener noreferrer">About</a> -->
-            <a href="https://github.com/leandcesar/enhancer-for-letterboxd/releases" target="_blank"
-               rel="noopener noreferrer">News</a>
-            <!-- <a href="https://github.com/leandcesar/enhancer-for-letterboxd/" target="_blank"
-               rel="noopener noreferrer">Help</a> -->
-            <a href="https://github.com/leandcesar/enhancer-for-letterboxd/issues" target="_blank"
-               rel="noopener noreferrer">Contact</a>
-            <!-- <a href="https://buymeacoffee.com/leandcesar" target="_blank" rel="noopener noreferrer">Donate</a> -->
-            <button id="share" aria-label="Share this page">Share</button>
-         </nav>
+            <img src="https://enhancer-for-letterboxd.vercel.app/icons/safari.svg" alt="" role="presentation"
+                loading="lazy" decoding="async" width="24" height="24" />
+        </div>
+    </main>
 
-         <p class="copyright">
-            Made by
-            <a href="https://linktr.ee/leandcesar" target="_blank" rel="noopener noreferrer">@leandcesar</a>
-         </p>
-      </div>
-   </footer>
+    <footer>
+        <div class="footer-wrap">
+            <nav class="footer-nav" aria-label="Footer">
+                <a href="/news">News</a>
+                <a href="https://github.com/leandcesar/enhancer-for-letterboxd/issues" target="_blank"
+                    rel="noopener noreferrer">Contact</a>
+                <!-- <a href="https://buymeacoffee.com/leandcesar" target="_blank" rel="noopener noreferrer">Donate</a> -->
+                <button id="share" aria-label="Share this page" type="button">Share</button>
+            </nav>
 
-   <script>
-      document
-         .getElementById("share")
-         ?.addEventListener("click", async () => {
+            <p class="copyright">
+                Made by
+                <a href="https://github.com/leandcesar/" target="_blank" rel="noopener noreferrer">@leandcesar</a>
+            </p>
+        </div>
+    </footer>
+
+    <script defer>
+        const shareBtn = document.getElementById("share");
+
+        shareBtn?.addEventListener("click", async () => {
             const url = location.href;
             const text = "Enhance the Letterboxd experience with additional features.";
 
             if (navigator.share) {
-               try {
-                  await navigator.share({
-                     title: document.title,
-                     text,
-                     url,
-                  });
-                  return;
-               } catch {
-               }
+                try {
+                    await navigator.share({ title: document.title, text, url });
+                    return;
+                } catch { }
             }
 
-            const shareUrl = `https://x.com/intent/tweet?text=${encodeURIComponent(
-               text
-            )}&url=${encodeURIComponent(url)}`;
+            window.open(
+                `https://x.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`,
+                "_blank",
+                "noopener,noreferrer"
+            );
+        });
 
-            window.open(shareUrl, "_blank", "noopener,noreferrer");
-         });
+        const chromeBtn = document.getElementById("btn-chrome");
+        const firefoxBtn = document.getElementById("btn-firefox");
+        const container = document.getElementById("install-buttons");
 
-      const chromeBtn = document.getElementById("btn-chrome");
-      const firefoxBtn = document.getElementById("btn-firefox");
-      const container = document.getElementById("install-buttons");
+        if (chromeBtn && firefoxBtn && container) {
+            const isFirefox = navigator.userAgent.includes("Firefox");
+            const recommended = isFirefox ? firefoxBtn : chromeBtn;
 
-      if (chromeBtn && firefoxBtn && container) {
-         const isFirefox = navigator.userAgent.includes("Firefox");
-         const recommended = isFirefox ? firefoxBtn : chromeBtn;
+            recommended.classList.add("recommended");
 
-         recommended.classList.add("recommended");
-         if (container.firstChild !== recommended) {
-            container.prepend(recommended);
-         }
-      }
-   </script>
+            if (container.firstElementChild !== recommended) {
+                container.prepend(recommended);
+            }
+        }
+    </script>
 </body>
 
 </html>

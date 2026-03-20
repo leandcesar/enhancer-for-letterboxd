@@ -1,0 +1,327 @@
+:root {
+    --black: #000;
+    --white: #fff;
+
+    --green: #00e054;
+    --green-hover: #00c84c;
+    --blue: #40bcf4;
+
+    --bg: #14181c;
+
+    --footer: #2c3440;
+    --footer-text: #99aabb;
+    --footer-text-hover: #d0dae3;
+    --footer-muted: #6e7c8c;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+    color: var(--white);
+    background: var(--bg) url("https://enhancer-for-letterboxd.vercel.app/assets/background.webp") repeat-x 0 -1px;
+}
+
+main {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.container {
+    width: 600px;
+    max-width: calc(100% - 40px);
+    margin: 0 auto;
+    text-align: left;
+}
+
+.logo {
+    max-width: 80%;
+    height: auto;
+    filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.15));
+}
+
+.install-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.install {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 14px 26px;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    border-radius: 8px;
+
+    text-decoration: none;
+    color: var(--white);
+
+    background: #3a3f45;
+    opacity: 0.8;
+    box-shadow: none;
+
+    transform: scale(0.96);
+
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.install.recommended {
+    background: var(--green);
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 8px 24px rgba(0, 224, 84, 0.35);
+}
+
+.install:hover {
+    transform: translateY(-2px) scale(1);
+}
+
+.install.recommended:hover {
+    background: var(--green-hover);
+    box-shadow: 0 12px 32px rgba(0, 224, 84, 0.45);
+}
+
+.install:focus-visible {
+    outline: 3px solid var(--blue);
+    outline-offset: 3px;
+}
+
+.install img,
+.browsers img {
+    width: 22px;
+    height: 22px;
+}
+
+.browsers {
+    display: flex;
+    gap: 16px;
+    font-size: 14px;
+    opacity: 0.75;
+}
+
+.browsers span {
+    opacity: 0.6;
+}
+
+.browsers img {
+    filter: grayscale(1) brightness(0.8) opacity(0.8);
+}
+
+footer {
+    width: 100%;
+    padding: 32px 0;
+
+    background: var(--footer);
+    color: var(--footer-text);
+
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-wrap {
+    width: 950px;
+    max-width: calc(100% - 40px);
+    margin: 0 auto;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.footer-nav {
+    display: flex;
+    gap: 18px;
+
+    font-size: 15px;
+    font-weight: 700;
+}
+
+footer a,
+footer button {
+    font: inherit;
+    color: var(--footer-text);
+    text-decoration: none;
+
+    background: none;
+    border: 0;
+    cursor: pointer;
+}
+
+footer a:hover,
+footer button:hover {
+    color: var(--footer-text-hover);
+}
+
+.copyright {
+    width: 100%;
+    margin-top: 10px;
+
+    font-size: 12px;
+    color: var(--footer-muted);
+}
+
+.skip {
+    position: absolute;
+    top: -40px;
+    left: 0;
+
+    background: var(--green);
+    color: var(--black);
+
+    padding: 8px 14px;
+    border-radius: 6px;
+}
+
+.skip:focus {
+    top: 10px;
+    left: 10px;
+}
+
+.sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+
+    overflow: hidden;
+    white-space: nowrap;
+
+    clip: rect(0, 0, 0, 0);
+    clip-path: inset(50%);
+}
+
+.header {
+    margin-bottom: 40px;
+}
+
+.header h1 {
+    font-size: 28px;
+    margin-top: 8px;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.release {
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.release-header {
+    margin-bottom: 12px;
+}
+
+.release-title {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.2;
+    text-align: center;
+
+    color: var(--white);
+}
+
+.badge {
+    margin-left: 6px;
+    padding: 2px 6px;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    border-radius: 999px;
+}
+
+.badge.latest {
+    background: rgba(46, 160, 67, 0.15);
+    color: #3fb950;
+}
+
+.badge.pre {
+    background: rgba(217, 119, 6, 0.15);
+    color: #f59e0b;
+}
+
+.markdown {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--footer-text);
+}
+
+.markdown h2 {
+    margin-top: 20px;
+    font-size: 18px;
+    color: var(--white);
+}
+
+.markdown h3 {
+    margin-top: 14px;
+    font-size: 15px;
+    color: var(--white);
+}
+
+.markdown ul {
+    margin-top: 8px;
+    padding-left: 20px;
+}
+
+.markdown strong {
+    color: var(--white);
+}
+
+.markdown a {
+    color: var(--blue);
+}
+
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.pagination a {
+    display: block;
+    padding: 9px 15px;
+
+    font-size: 12px;
+    line-height: 12px;
+
+    color: var(--footer-text);
+    text-decoration: none;
+
+    background: #283038;
+    border-radius: 3px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+
+    white-space: nowrap;
+}
+
+.pagination a:hover {
+    color: var(--footer-text-hover);
+    background: #2f3842;
+}
