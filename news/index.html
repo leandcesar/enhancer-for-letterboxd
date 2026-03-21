@@ -54,8 +54,8 @@
     </footer>
 
     <script defer>
-        const CACHE_KEY = "releases_cache_v1";
-        const CACHE_TTL = 1000 * 60 * 10;
+        const CACHE_KEY = "releases_cache";
+        const CACHE_TTL = 1000 * 60 * 1;
         const PER_PAGE = 1;
 
         const list = document.getElementById("list");
@@ -100,7 +100,7 @@
 
             const res = await fetch(
                 "https://api.github.com/repos/leandcesar/enhancer-for-letterboxd/releases",
-                { cache: "force-cache" }
+                { cache: "no-store" }
             );
 
             const data = await res.json();
