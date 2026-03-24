@@ -29,7 +29,8 @@ Enhancer for Letterboxd is a lightweight browser extension that adds insights, f
 
 - Find members who share the same four favorite films
 - Pick a random film from watchlist, lists, and cast & crew pages
-- Visual indicators for films with a release anniversary today.
+- Visual indicators for films included in the Criterion Collection
+- Visual indicators for films with a release anniversary today
 
 </details>
 
@@ -86,6 +87,7 @@ Additional filters directly on lists:
 - Country
 - Language
 - Runtime (beta)
+- Theme
 - Hide shorts, TV and docs (quick toggle included)
 
 Hide native Letterboxd filters.
