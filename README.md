@@ -1,10 +1,8 @@
 <p align="center">
   <a href="https://enhancer-for-letterboxd.vercel.app/">
-    <img src="assets/logo.png" alt="Enhancer for Letterboxd" width="200"/>
+    <img src="assets/images/logo.png" alt="Enhancer for Letterboxd" width="200"/>
   </a>
 </p>
-
-<h1 align="center">Enhancer for Letterboxd</h1>
 
 <p align="center">
   <a href="https://chromewebstore.google.com/detail/abkbjnimmidipmhhhlcnikkifjpdjdpc">
@@ -15,59 +13,96 @@
   </a>
 </p>
 
+# Enhancer for Letterboxd
+
 Enhancer for Letterboxd is a lightweight browser extension that adds insights, filters, and tools directly into the Letterboxd UI — without getting in your way.
 
 ## Installation
 
-- Install from Chrome Web Store: [Click here](https://chromewebstore.google.com/detail/abkbjnimmidipmhhhlcnikkifjpdjdpc)
-- Or install from Firefox Browser Add-ons: [Click here](https://addons.mozilla.org/firefox/addon/enhancer-for-letterboxd/)
+- [Install for Chrome](https://chromewebstore.google.com/detail/abkbjnimmidipmhhhlcnikkifjpdjdpc)
+- [Install for Firefox](https://addons.mozilla.org/firefox/addon/enhancer-for-letterboxd/)
 
 ## Features
 
-<details>
-  <summary>🎲 Discovery</summary>
-
-- Find members who share the same four favorite films
-- Pick a random film from watchlist, lists, and cast & crew pages
-- Visual indicators for films included in the Criterion Collection
-- Visual indicators for films with a release anniversary today
-
-</details>
-
-<details>
-  <summary>📊 Ratings</summary>
+### Ratings
 
 - Friends ratings histogram on film pages
 - Your rating histogram on cast & crew pages
 
-</details>
+<p align="center">
+  <img
+    src="docs/images/friends_histogram.png"
+    alt="Friends ratings histogram"
+    width="36%"
+  />
+  <img
+    src="docs/images/cast_histogram.png"
+    alt="Cast ratings histogram"
+    width="28%"
+  />
+  <img
+    src="docs/images/crew_histogram.png"
+    alt="Crew ratings histogram"
+    width="28%"
+  />
+</p>
 
-<details>
-  <summary>✍ Writing tools</summary>
+### Film stat icons
 
-- Formatting toolbar (reviews, comments, lists)
-- Live preview
+- Major awards winners ([Oscars](https://letterboxd.com/enhancerforthis/tag/oscar-winners/lists/by/oldest/), [Golden Globes](https://letterboxd.com/enhancerforthis/tag/golden-globe-winners/lists/by/oldest/), [Critics' Choice](https://letterboxd.com/enhancerforthis/tag/critics-choice-winners/lists/by/oldest/), [BAFTA winners](https://letterboxd.com/enhancerforthis/tag/bafta-winners/lists/by/oldest/), [Cannes winners](https://letterboxd.com/enhancerforthis/tag/cannes-winners/lists/by/oldest/), and [SAG winners](https://letterboxd.com/enhancerforthis/tag/sag-winners/lists/by/oldest/))
+- Films in the [Criterion Collection](https://letterboxd.com/enhancerforthis/list/criterion-collection/)
+- Films with a release anniversary today
 
-</details>
+<p align="center">
+  <img
+    src="docs/images/stat_icons.png"
+    alt="Award-winners icons"
+    width="41%"
+  />
+  <img
+    src="docs/images/release_anniversary.png"
+    alt="Release anniversary icon"
+    width="50%"
+  />
+</p>
 
-<details>
-  <summary>🏆 Awards</summary>
+### Unofficial related films
 
-Visual indicators for award-winning films:
+Discover [unofficial related films](https://letterboxd.com/enhancerforthis/tag/unofficial-related/lists/by/name/) directly on film pages.
 
-- Academy Awards (Oscars)
-- Golden Globes
-- Critics' Choice Awards
-- British Academy Film Awards (BAFTA)
-- Cannes Film Festival (Palme d'Or)
-- Actor Awards, formerly Screen Actors Guild Awards (SAG)
+<p align="center">
+  <img
+    src="docs/images/unofficial_related_films.png"
+    alt="Unofficial related films"
+    width="700"
+  />
+</p>
 
-Click any icon -> jump to the ceremony list.
+### Runtime
 
-</details>
+Choose how runtime is displayed:
 
-<details>
-  <summary>🧑 Profile stats</summary>
+- Minutes (Letterboxd default)
+- Hours
+- Both
+
+### Profile activities
+
+Additional activities directly on profiles:
+
+- Recent likes
+- Recent 5-star ratings
+- Recent year premieres
+
+<p align="center">
+  <img
+    src="docs/images/profile_recent_likes.png"
+    alt="Profile stats"
+    width="700"
+  />
+</p>
+
+### Profile stats
 
 Additional stats directly on profiles:
 
@@ -75,44 +110,83 @@ Additional stats directly on profiles:
 - First log year
 - Years logging
 
-Hide native Letterboxd stats.
+Option to hide native Letterboxd stats.
 
-</details>
+<p align="center">
+  <img
+    src="docs/images/profile_stats.png"
+    alt="Profile stats"
+    width="700"
+  />
+</p>
 
-<details>
-  <summary>🔎 Filters</summary>
+### Filters
 
 Additional filters directly on lists:
 
-- Country
-- Language
-- Runtime (beta)
-- Theme
-- Hide shorts, TV and docs (quick toggle included)
+- Country, Language, Theme, and Runtime (beta)
+- "Hide shorts, TV and docs" shortcut
 
-Hide native Letterboxd filters.
+Option to hide native Letterboxd filters.
 
-</details>
+<p align="center">
+  <img
+    src="docs/images/filters.gif"
+    alt="Filters"
+    width="700"
+  />
+</p>
 
-<details>
-  <summary>⏱ Runtime display</summary>
+### Find twins
 
-Choose how runtimes appear:
+Find members who share your four favorite films.
 
-- Minutes (Letterboxd default)
-- Hours
-- Both
+<p align="center">
+  <img
+    src="docs/images/find_twins.png"
+    alt="Profile stats"
+    width="700"
+  />
+</p>
 
-</details>
+### Writing tools
 
-## Settings
+Formatting toolbar with live preview.
 
-All features are controlled via the popup extension:
+<p align="center">
+  <img
+    src="docs/images/formatting_toolbar.gif"
+    alt="Formatting toolbar"
+    width="700"
+  />
+</p>
 
-- Enable or disable features individually
+### Random film picker
+
+Pick a random film from watchlist, lists, and cast & crew pages.
+
+<p align="center">
+  <img
+    src="docs/images/random_film_picker.png"
+    alt="Random film picker"
+    width="350"
+  />
+</p>
+
+### Settings
+
+Enable or disable all features from the extension popup.
+
+<p align="center">
+  <img
+    src="docs/images/popup.png"
+    alt="Popup"
+    width="350"
+  />
+</p>
 
 ## Support
 
-- Have a suggestion or found a bug? [Click here](https://github.com/leandcesar/enhancer-for-letterboxd/issues)
-- Want to see what's new? [Click here](https://github.com/leandcesar/enhancer-for-letterboxd/releases)
-- Want to support the project? [Click here](https://buymeacoffee.com/leandcesar)
+- Found a bug or have a suggestion? [Report it here](https://github.com/leandcesar/enhancer-for-letterboxd/issues?q=is%3Aissue)
+- Want to see what’s new? [Check out the releases](https://github.com/leandcesar/enhancer-for-letterboxd/releases)
+- Enjoying the extension? [Support the project](https://buymeacoffee.com/leandcesar)

@@ -31,7 +31,7 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 
     color: var(--white);
-    background: var(--bg) url("https://enhancer-for-letterboxd.vercel.app/assets/background.webp") repeat-x 0 -1px;
+    background: var(--bg) url("https://enhancer-for-letterboxd.vercel.app/assets/images/background.webp") repeat-x 0 -1px;
 }
 
 main {
