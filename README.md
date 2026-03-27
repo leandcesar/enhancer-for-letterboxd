@@ -24,10 +24,9 @@ Enhancer for Letterboxd is a lightweight browser extension that adds insights, f
 
 ## Features
 
-### Ratings
+### Ratings histogram
 
-- Friends ratings histogram on film pages
-- Your rating histogram on cast & crew pages
+Friends ratings histogram on film pages and your rating histogram on cast & crew pages.
 
 <p align="center">
   <img
@@ -49,9 +48,7 @@ Enhancer for Letterboxd is a lightweight browser extension that adds insights, f
 
 ### Film stat icons
 
-- Major awards winners ([Oscars](https://letterboxd.com/enhancerforthis/tag/oscar-winners/lists/by/oldest/), [Golden Globes](https://letterboxd.com/enhancerforthis/tag/golden-globe-winners/lists/by/oldest/), [Critics' Choice](https://letterboxd.com/enhancerforthis/tag/critics-choice-winners/lists/by/oldest/), [BAFTA winners](https://letterboxd.com/enhancerforthis/tag/bafta-winners/lists/by/oldest/), [Cannes winners](https://letterboxd.com/enhancerforthis/tag/cannes-winners/lists/by/oldest/), and [SAG winners](https://letterboxd.com/enhancerforthis/tag/sag-winners/lists/by/oldest/))
-- Films in the [Criterion Collection](https://letterboxd.com/enhancerforthis/list/criterion-collection/)
-- Films with a release anniversary today
+Major awards winners ([Oscars](https://letterboxd.com/enhancerforthis/tag/oscar-winners/lists/by/oldest/), [Golden Globes](https://letterboxd.com/enhancerforthis/tag/golden-globe-winners/lists/by/oldest/), [Critics' Choice](https://letterboxd.com/enhancerforthis/tag/critics-choice-winners/lists/by/oldest/), [BAFTA](https://letterboxd.com/enhancerforthis/tag/bafta-winners/lists/by/oldest/), [Cannes](https://letterboxd.com/enhancerforthis/tag/cannes-winners/lists/by/oldest/), and [SAG](https://letterboxd.com/enhancerforthis/tag/sag-winners/lists/by/oldest/)), films in the [Criterion Collection](https://letterboxd.com/enhancerforthis/list/criterion-collection/), and films with a release anniversary today.
 
 <p align="center">
   <img
@@ -74,7 +71,7 @@ Discover [unofficial related films](https://letterboxd.com/enhancerforthis/tag/u
   <img
     src="docs/images/unofficial_related_films.png"
     alt="Unofficial related films"
-    width="700"
+    width="500"
   />
 </p>
 
@@ -88,76 +85,61 @@ Choose how runtime is displayed:
 
 ### Profile activities
 
-Additional activities directly on profiles:
-
-- Recent likes
-- Recent 5-star ratings
-- Recent year premieres
+Additional activities directly on profiles: Recent likes, Recent 5-star ratings, and Recent year premieres.
 
 <p align="center">
   <img
     src="docs/images/profile_recent_likes.png"
     alt="Profile stats"
-    width="700"
+    width="600"
   />
 </p>
 
 ### Profile stats
 
-Additional stats directly on profiles:
-
-- Average films watched per month/week/day this year
-- First log year
-- Years logging
-
-Option to hide native Letterboxd stats.
+Additional stats directly on profiles: Average films watched per month/week/day this year, First log year, and Years logging. Option to hide native Letterboxd stats.
 
 <p align="center">
   <img
     src="docs/images/profile_stats.png"
     alt="Profile stats"
-    width="700"
+    width="600"
   />
 </p>
 
 ### Filters
 
-Additional filters directly on lists:
-
-- Country, Language, Theme, and Runtime (beta)
-- "Hide shorts, TV and docs" shortcut
-
-Option to hide native Letterboxd filters.
+Additional filters directly on lists: Country, Language, Theme, and Runtime (beta). "Hide shorts, TV and docs" shortcut. Option to hide native Letterboxd filters.
 
 <p align="center">
   <img
     src="docs/images/filters.gif"
     alt="Filters"
-    width="700"
+    width="600"
   />
 </p>
 
 ### Find twins
 
-Find members who share your four favorite films.
+Find members who share the same four favorite films.
 
 <p align="center">
   <img
     src="docs/images/find_twins.png"
     alt="Profile stats"
-    width="700"
+    width="600"
   />
 </p>
 
 ### Writing tools
 
-Formatting toolbar with live preview.
+Formatting toolbar for applying bold, italic, quotes, hyperlinks, with preview.
 
 <p align="center">
   <img
     src="docs/images/formatting_toolbar.gif"
     alt="Formatting toolbar"
-    width="700"
+    width="600"
   />
 </p>
 

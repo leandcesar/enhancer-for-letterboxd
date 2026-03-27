@@ -9,7 +9,7 @@
 
     <meta name="description" content="Enhances the Letterboxd experience with additional features." />
     <meta name="robots" content="index,follow" />
-    <link rel="canonical" href="https://enhancer-for-letterboxd.vercel.app/news" />
+    <link rel="canonical" href="https://enhancer-for-letterboxd.vercel.app/changelog" />
 
     <meta name="theme-color" content="#14181c" />
     <meta name="color-scheme" content="dark" />
@@ -40,6 +40,7 @@
         <div class="footer-wrap">
             <nav class="footer-nav" aria-label="Footer">
                 <a href="/">Home</a>
+                <a href="/features">Features</a>
                 <a href="https://github.com/leandcesar/enhancer-for-letterboxd/issues?q=is%3Aissue" target="_blank"
                     rel="noopener noreferrer">Feedback</a>
                 <!-- <a href="https://buymeacoffee.com/leandcesar" target="_blank" rel="noopener noreferrer">Donate</a> -->
@@ -55,7 +56,7 @@
 
     <script defer>
         const CACHE_KEY = "releases_cache";
-        const CACHE_TTL = 1000 * 60 * 1;
+        const CACHE_TTL = 1000 * 60 * 60;
         const PER_PAGE = 1;
 
         const list = document.getElementById("list");
@@ -85,7 +86,7 @@
         }
 
         function buildPageUrl(page) {
-            return page === 1 ? "/news" : `/news?page=${page}`;
+            return page === 1 ? "/changelog" : `/changelog?page=${page}`;
         }
 
         async function getReleases() {
@@ -100,7 +101,6 @@
 
             const res = await fetch(
                 "https://api.github.com/repos/leandcesar/enhancer-for-letterboxd/releases",
-                { cache: "no-store" }
             );
 
             const data = await res.json();

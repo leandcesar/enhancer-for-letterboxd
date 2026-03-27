@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>Enhancer for Letterboxd - Features</title>
+
+    <meta name="description" content="Explore all features of Enhancer for Letterboxd." />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://enhancer-for-letterboxd.vercel.app/features" />
+
+    <meta name="theme-color" content="#14181c" />
+    <meta name="color-scheme" content="dark" />
+
+    <link rel="preconnect" href="https://raw.githubusercontent.com" />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+
+    <link rel="icon" href="https://enhancer-for-letterboxd.vercel.app/assets/images/icon.png" />
+
+    <link rel="preload" href="../style.css" as="style" />
+    <link rel="stylesheet" href="../style.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+
+<body>
+    <main>
+        <div class="container">
+            <div id="list" class="list"></div>
+            <div id="pagination" class="pagination"></div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-wrap">
+            <nav class="footer-nav">
+                <a href="/">Home</a>
+                <a href="/changelog">Changelog</a>
+                <a href="https://github.com/leandcesar/enhancer-for-letterboxd/issues?q=is%3Aissue" target="_blank"
+                    rel="noopener noreferrer">Feedback</a>
+                <button id="share" type="button">Share</button>
+            </nav>
+
+            <p class="copyright">
+                Made by
+                <a href="https://linktr.ee/leandcesar" target="_blank">@leandcesar</a>
+            </p>
+        </div>
+    </footer>
+
+    <script defer>
+        const CACHE_KEY = "features_cache";
+        const CACHE_TTL = 1000 * 60 * 60;
+        const PER_PAGE = 1;
+
+        const list = document.getElementById("list");
+        const pagination = document.getElementById("pagination");
+
+        function getPage() {
+            const params = new URLSearchParams(location.search);
+            return parseInt(params.get("page"), 10) || 1;
+        }
+
+        function buildPageUrl(page) {
+            return page === 1 ? "/features" : `/features?page=${page}`;
+        }
+
+        async function getMarkdown() {
+            try {
+                const cached = localStorage.getItem(CACHE_KEY);
+                if (cached) {
+                    const { data, timestamp } = JSON.parse(cached);
+                    if (Date.now() - timestamp < CACHE_TTL) return data;
+                }
+            } catch { }
+
+            const res = await fetch(
+                "https://raw.githubusercontent.com/leandcesar/enhancer-for-letterboxd/main/README.md",
+            );
+
+            const text = await res.text();
+
+            try {
+                localStorage.setItem(CACHE_KEY, JSON.stringify({
+                    data: text,
+                    timestamp: Date.now()
+                }));
+            } catch { }
+
+            return text;
+        }
+
+        function fixRelativeUrls(content) {
+                const base = "https://raw.githubusercontent.com/leandcesar/enhancer-for-letterboxd/main/";
+
+                return content
+                    .replace(/!\[(.*?)\]\((.*?)\)/g, (m, alt, url) => {
+                        if (url.startsWith("http")) return m;
+                        return `![${alt}](${base}${url})`;
+                    })
+                    .replace(/<img([^>]+)src="([^"]+)"/g, (m, before, url) => {
+                        if (url.startsWith("http")) return m;
+                        return `<img${before}src="${base}${url}"`;
+                    });
+            }
+
+        function extractFeatures(md) {
+                const section = md.split("## Features")[1]?.split("\n## ")[0];
+                if (!section) return [];
+
+                const parts = section.split("\n### ").slice(1);
+
+                return parts
+                .map(part => {
+                    const [title, ...rest] = part.split("\n");
+
+                    let content = rest.join("\n").trim();
+
+                    content = fixRelativeUrls(content);
+
+                    return {
+                        title: title.trim(),
+                        content
+                    };
+                })
+                .filter(f => f.title !== "Runtime");
+            }
+
+        function renderFeature(f) {
+            return `
+                <article class="release">
+                    <header class="release-header">
+                        <div class="release-title">
+                            <span>${f.title}</span>
+                        </div>
+                    </header>
+
+                    <div class="markdown">
+                        ${window.marked ? marked.parse(f.content) : f.content}
+                    </div>
+                </article>
+            `;
+        }
+
+        async function render() {
+            list.textContent = "Loading...";
+
+            try {
+                const page = getPage();
+                const md = await getMarkdown();
+                const features = extractFeatures(md);
+
+                const start = (page - 1) * PER_PAGE;
+                const paginated = features.slice(start, start + PER_PAGE);
+
+                list.innerHTML = paginated.map(renderFeature).join("");
+
+                const totalPages = Math.ceil(features.length / PER_PAGE);
+
+                pagination.innerHTML = `
+                    ${page > 1 ? `<a href="${buildPageUrl(page - 1)}" rel="prev">Previous</a>` : "<span></span>"}
+                    ${page < totalPages ? `<a href="${buildPageUrl(page + 1)}" rel="next">Next</a>` : "<span></span>"}
+                `;
+            } catch (e) {
+                list.textContent = "Failed to load features.";
+                console.error(e);
+            }
+        }
+
+        document.getElementById("share")?.addEventListener("click", async () => {
+            const url = location.href;
+
+            if (navigator.share) {
+                try {
+                    await navigator.share({ title: document.title, url });
+                    return;
+                } catch { }
+            }
+
+            window.open(
+                `https://x.com/intent/tweet?url=${encodeURIComponent(url)}`,
+                "_blank"
+            );
+        });
+
+        render();
+    </script>
+</body>
+
+</html>
