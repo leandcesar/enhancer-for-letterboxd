@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://enhancer-for-letterboxd.vercel.app/">
-    <img src="assets/images/logo.png" alt="Enhancer for Letterboxd" width="200"/>
+    <img src="src/assets/images/logo.png" alt="Enhancer for Letterboxd" width="200"/>
   </a>
 </p>
 
