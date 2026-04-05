@@ -41,6 +41,7 @@
             <nav class="footer-nav" aria-label="Footer">
                 <a href="/">Home</a>
                 <a href="/features">Features</a>
+                <a href="/changelog">Changelog</a>
                 <a href="https://github.com/leandcesar/enhancer-for-letterboxd/issues?q=is%3Aissue" target="_blank"
                     rel="noopener noreferrer">Feedback</a>
                 <!-- <a href="https://buymeacoffee.com/leandcesar" target="_blank" rel="noopener noreferrer">Donate</a> -->
@@ -57,7 +58,7 @@
     <script defer>
         const CACHE_KEY = "releases_cache";
         const CACHE_TTL = 1000 * 60 * 60;
-        const PER_PAGE = 1;
+                const PER_PAGE = 5;
 
         const list = document.getElementById("list");
         const pagination = document.getElementById("pagination");
