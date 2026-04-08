@@ -32,7 +32,7 @@ Friends' ratings histogram on film pages and your rating histogram on cast & cre
   <img
     src="docs/images/friends_histogram.png"
     alt="Friends ratings histogram"
-    width="36%"
+    width="35%"
   />
   <img
     src="docs/images/cast_histogram.png"
@@ -54,12 +54,12 @@ Major awards winners ([Oscars](https://letterboxd.com/enhancerforthis/tag/oscar-
   <img
     src="docs/images/stat_icons.png"
     alt="Award-winners icons"
-    width="41%"
+    width="40%"
   />
   <img
     src="docs/images/release_anniversary.png"
     alt="Release anniversary icon"
-    width="50%"
+    width="40%"
   />
 </p>
 
@@ -71,7 +71,7 @@ Shows instant film suggestions while typing in the search bar.
   <img
     src="docs/images/search_autocomplete.gif"
     alt="Search autocompelte"
-    width="350"
+    width="600"
   />
 </p>
 
@@ -135,6 +135,18 @@ Find members who share the same four favorite films.
   />
 </p>
 
+### Highlight "Follows you"
+
+Adds a "Follows you" label on members who follow you on Network pages.
+
+<p align="center">
+  <img
+    src="docs/images/follows_you.png"
+    alt="Follows you"
+    width="600"
+  />
+</p>
+
 ### Random film picker
 
 Pick a random film from watchlist, lists, and cast & crew pages.
@@ -143,7 +155,7 @@ Pick a random film from watchlist, lists, and cast & crew pages.
   <img
     src="docs/images/random_film_picker.png"
     alt="Random film picker"
-    width="350"
+    width="600"
   />
 </p>
 
@@ -155,7 +167,7 @@ Adds more official lists to the "Rating" filter on the [Films page](https://lett
   <img
     src="docs/images/browse_by_rating.png"
     alt="Browse by rating"
-    width="500"
+    width="600"
   />
 </p>
 
@@ -167,7 +179,7 @@ Discover [unofficial related films](https://letterboxd.com/enhancerforthis/tag/u
   <img
     src="docs/images/unofficial_related_films.png"
     alt="Unofficial related films"
-    width="500"
+    width="600"
   />
 </p>
 
@@ -187,7 +199,7 @@ Enable or disable all features from the extension popup.
   <img
     src="docs/images/popup.png"
     alt="Popup"
-    width="350"
+    width="400"
   />
 </p>
 
