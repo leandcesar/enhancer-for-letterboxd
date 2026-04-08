@@ -50,7 +50,7 @@
 
             <p class="copyright">
                 Made by
-                <a href="https://linktr.ee/leandcesar" target="_blank" rel="noopener noreferrer">@leandcesar</a>
+                <a href="https://github.com/leandcesar/" target="_blank" rel="noopener noreferrer">@leandcesar</a>
             </p>
         </div>
     </footer>
@@ -58,7 +58,7 @@
     <script defer>
         const CACHE_KEY = "releases_cache";
         const CACHE_TTL = 1000 * 60 * 60;
-                const PER_PAGE = 5;
+        const PER_PAGE = 5;
 
         const list = document.getElementById("list");
         const pagination = document.getElementById("pagination");
@@ -130,7 +130,7 @@
             <article class="release" id="${r.tag_name}">
                 <header class="release-header">
                     <div class="release-title">
-                        <span title="Published at ${date}">${r.tag_name}</span>
+                        <span title="Version ${r.tag_name}">${date}</span>
                         <br>
                         ${isLatest ? '<span class="badge latest">Latest</span>' : ""}
                         ${r.prerelease ? '<span class="badge pre">Pre-release</span>' : ""}
