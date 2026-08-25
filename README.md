@@ -205,6 +205,6 @@ Enable or disable all features from the extension popup.
 
 ## Support
 
-- Found a bug or have a suggestion? [Report it here](https://github.com/leandcesar/enhancer-for-letterboxd/issues?q=is%3Aissue)
+- Found a bug or have a suggestion? [Report it here](https://enhancer-for-letterboxd.featurebase.app)
 - Want to see what’s new? [Check out the releases](https://github.com/leandcesar/enhancer-for-letterboxd/releases)
 - Enjoying the extension? [Support the project](https://buymeacoffee.com/leandcesar)
