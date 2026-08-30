@@ -15,16 +15,14 @@
     <meta name="color-scheme" content="dark" />
     <meta name="format-detection" content="telephone=no" />
 
-    <link rel="preconnect" href="https://enhancer-for-letterboxd.vercel.app" />
     <link rel="preconnect" href="https://chromewebstore.google.com" />
     <link rel="preconnect" href="https://addons.mozilla.org" />
 
-    <link rel="icon" href="https://enhancer-for-letterboxd.vercel.app/assets/images/icon.png" />
-    <link rel="apple-touch-icon" href="https://enhancer-for-letterboxd.vercel.app/assets/images/icon.png" />
+    <link rel="icon" href="assets/images/icon.png" />
+    <link rel="apple-touch-icon" href="assets/images/icon.png" />
 
-    <link rel="preload" as="image" href="https://enhancer-for-letterboxd.vercel.app/assets/images/logo.png"
-        fetchpriority="high" />
-
+    <link rel="preload" as="image" href="assets/images/logo.avif"
+        imagesrcset="assets/images/logo.avif 1x, assets/images/logo.webp 1.2x" fetchpriority="high" />
     <link rel="preload" href="style.css" as="style" />
     <link rel="stylesheet" href="style.css" />
 </head>
@@ -35,8 +33,8 @@
     <main id="main">
         <h1 class="sr">Enhancer for Letterboxd</h1>
 
-        <img src="https://enhancer-for-letterboxd.vercel.app/assets/images/logo.png" class="logo" alt="Enhancer for Letterboxd"
-            decoding="async" fetchpriority="high" width="200" height="200" />
+        <img class="logo" src="assets/images/logo.avif" srcset="assets/images/logo.avif 1x, assets/images/logo.webp 1.2x"
+            alt="Enhancer for Letterboxd" decoding="async" fetchpriority="high" width="200" height="200" />
 
         <div class="install-buttons" id="install-buttons">
             <a id="btn-chrome" class="install"
