@@ -14,6 +14,20 @@
     <meta name="theme-color" content="#14181c" />
     <meta name="color-scheme" content="dark" />
 
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HX8E7HHF6W"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-HX8E7HHF6W');
+    </script>
+    
+    <script>
+        window.va = window.va || function () {
+            (window.vaq = window.vaq || []).push(arguments);
+        };
+    </script>
+
     <link rel="preconnect" href="https://raw.githubusercontent.com" />
     <link rel="preconnect" href="https://cdn.jsdelivr.net" />
 
@@ -170,8 +184,25 @@
             }
         }
 
+            function trackEvent(name, params = {}) {
+                if (window.gtag) {
+                    window.gtag("event", name, {
+                        page_path: location.pathname,
+                        page_title: document.title,
+                        ...params
+                    });
+                }
+            }
+
         document.getElementById("share")?.addEventListener("click", async () => {
             const url = location.href;
+
+            trackEvent("share_click", {
+                method: navigator.share ? "native" : "x_tweet",
+                share_url: url,
+                share_source: "features_page",
+                share_title: document.title
+            });
 
             if (navigator.share) {
                 try {
@@ -185,6 +216,38 @@
                 "_blank"
             );
         });
+
+            document.querySelectorAll('.pagination a').forEach((link) => {
+                link.addEventListener('click', () => {
+                    const rel = link.getAttribute('rel') || 'none';
+                    const target = link.getAttribute('href') || '/features';
+
+                    trackEvent('features_pagination_click', {
+                        page_target: target,
+                        rel,
+                        page_number: target.includes('page=') ? target.split('page=')[1] : '1'
+                    });
+                    trackEvent(`features_pagination_${rel || 'none'}`, {
+                        page_target: target
+                    });
+                });
+            });
+
+            document.querySelectorAll('a[href^="http"]').forEach((link) => {
+                const label = (link.textContent || '').trim() || link.getAttribute('aria-label') || 'external_link';
+                link.addEventListener('click', () => {
+                    trackEvent('outbound_click', {
+                        destination: link.href,
+                        link_text: label,
+                        link_domain: new URL(link.href).hostname,
+                        page_section: 'features_footer'
+                    });
+                    trackEvent(`outbound_click_${new URL(link.href).hostname.replace(/\./g, '_')}`, {
+                        destination: link.href,
+                        link_text: label
+                    });
+                });
+            });
 
         render();
     </script>

@@ -15,6 +15,20 @@
     <meta name="color-scheme" content="dark" />
     <meta name="format-detection" content="telephone=no" />
 
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HX8E7HHF6W"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-HX8E7HHF6W');
+    </script>
+    
+    <script>
+        window.va = window.va || function () {
+            (window.vaq = window.vaq || []).push(arguments);
+        };
+    </script>
+
     <link rel="preconnect" href="https://chromewebstore.google.com" />
     <link rel="preconnect" href="https://addons.mozilla.org" />
 
@@ -86,9 +100,24 @@
     <script defer>
         const shareBtn = document.getElementById("share");
 
+            function trackEvent(name, params = {}) {
+                if (window.gtag) {
+                    window.gtag("event", name, {
+                        page_path: location.pathname,
+                        page_title: document.title,
+                        ...params
+                    });
+                }
+            }
+
         shareBtn?.addEventListener("click", async () => {
             const url = location.href;
             const text = "Enhance the Letterboxd experience with additional features.";
+
+            trackEvent("share_click", {
+                method: navigator.share ? "native" : "x_tweet",
+                share_url: url
+            });
 
             if (navigator.share) {
                 try {
@@ -107,6 +136,37 @@
         const chromeBtn = document.getElementById("btn-chrome");
         const firefoxBtn = document.getElementById("btn-firefox");
         const container = document.getElementById("install-buttons");
+
+            [chromeBtn, firefoxBtn].forEach((btn) => {
+                btn?.addEventListener("click", () => {
+                    const browser = btn.id === "btn-firefox" ? "firefox" : "chrome";
+                    trackEvent("install_click", {
+                        browser,
+                        destination: btn.href,
+                        install_button: browser,
+                        cta_label: btn.textContent.trim()
+                    });
+                    trackEvent(`install_click_${browser}`, {
+                        destination: btn.href,
+                        cta_label: btn.textContent.trim()
+                    });
+                });
+            });
+
+            document.querySelectorAll('a[href^="http"]').forEach((link) => {
+                const label = (link.textContent || "").trim() || link.getAttribute("aria-label") || "external_link";
+                link.addEventListener("click", () => {
+                    trackEvent("outbound_click", {
+                        destination: link.href,
+                        link_text: label,
+                        link_domain: new URL(link.href).hostname
+                    });
+                    trackEvent(`outbound_click_${new URL(link.href).hostname.replace(/\./g, "_")}`, {
+                        destination: link.href,
+                        link_text: label
+                    });
+                });
+            });
 
         if (chromeBtn && firefoxBtn && container) {
             const isFirefox = navigator.userAgent.includes("Firefox");
